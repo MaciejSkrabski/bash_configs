@@ -5,3 +5,4 @@ alias uu="sudo apt update && sudo apt upgrade -y; sudo apt autoclean -y; sudo ap
 alias cs=cdls
 alias brc="source ~/.bashrc"
 alias key="sudo inxi -Fxs >> keyerror.txt; uname -srv >> keyerror.txt; xinput >> keyerror.txt"
+alias cls="clear"
