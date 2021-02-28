@@ -165,6 +165,10 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 bindsym $mod+shift+x exec i3lock --color "#000000"
 
+bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 5+ unmute"
+bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 5- unmute"
+bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
+
 # assigns
 assign [class="(?i)xfce4-terminal"] $ws1
 assign [class="Firefox-esr"] $ws2

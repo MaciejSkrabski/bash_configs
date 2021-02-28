@@ -6,3 +6,6 @@ alias cs=cdls
 alias brc="source ~/.bashrc"
 alias key="sudo inxi -Fxs >> keyerror.txt; uname -srv >> keyerror.txt; xinput >> keyerror.txt"
 alias cls="clear"
+alias shutdown="systemctl poweroff"
+alias poweroff="systemctl poweroff"
+alias reboot="systemctl reboot"
