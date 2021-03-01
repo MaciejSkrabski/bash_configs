@@ -120,3 +120,8 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# disable BEEEEP!!!
+if [ -n "$DISPLAY" ]; then
+  xset b off
+fi
