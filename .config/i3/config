@@ -103,7 +103,7 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10"
+set $ws10 "10: Spotify"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -172,6 +172,10 @@ bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
 # assigns
 assign [class="(?i)xfce4-terminal"] $ws1
 assign [class="Firefox-esr"] $ws2
+# assign [class="(?i)spotify"] $ws10
+# due to bug the above ^ doesn't work
+# so I need to use for_window
+for_window [class="(?i)spotify"] move container to workspace $ws10
 
 # colors
 set $bg-color            #2f343f
