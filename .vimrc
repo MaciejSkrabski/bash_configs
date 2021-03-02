@@ -35,3 +35,11 @@ set nocompatible
 
 " Search folders recursively
 set path+=**
+
+" tag jumping
+command! MakeTags !ctags -R .
+" now:
+" ^] to jump to tag under cursor
+" g^] for ambiguous tags
+" ^t to jump back up the tag stack
+" this doesn't provide visual list of tags
