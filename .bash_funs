@@ -5,9 +5,9 @@ spongebob() {
 cdls() {
     if [ $# -eq 1 ]
     then
-    	cd "$1" && ls -la .
+    	cd "$1" && ls -A  .
     else
-    	cd ~ && ls -la .
+    	cdls ~    
     fi
 }
 
