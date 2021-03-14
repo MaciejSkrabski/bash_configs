@@ -19,6 +19,9 @@ set showcmd
 " mapping of <C-L> below)
 set hlsearch 
 
+" Highlight searches while typing
+set incsearch
+
 " When opening a new line and no filetype-specific indenting is enabled, keep
 " the same indent as the line you're currently on. Useful for READMEs, etc.
 set autoindent
@@ -43,3 +46,14 @@ command! MakeTags !ctags -R .
 " g^] for ambiguous tags
 " ^t to jump back up the tag stack
 " this doesn't provide visual list of tags
+
+" file browsing
+let g:netrw_banner=0		"no annoying banner"
+let g:netrw_browse_split=4	"open in prior window"
+let g:netrw_altv=1		"open splits to the right"
+let g:netrw_liststyle=3		"tree"
+let g:netrw_list_hide=netrw_gitignore#Hide()
+let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+" :edit to open file browser
+" <CR>/v/t to open in an h-split/v-split/tab
+" check |netrw-browse-maps| for more mappings

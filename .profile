@@ -27,3 +27,4 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 [[ "$(tty)" = '/dev/tty1' ]] && exec startx && exit
+source "$HOME/.cargo/env"
