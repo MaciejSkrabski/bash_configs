@@ -136,7 +136,6 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-# nautilus on win+e
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -166,6 +165,7 @@ mode "resize" {
 # binds
 bindsym $mod+r mode "resize"
 bindsym $mod+shift+x exec i3lock --color "#000000"
+# nautilus on win+g
 bindsym $mod+g exec nautilus
 
 bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 5+ unmute"
