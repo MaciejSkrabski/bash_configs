@@ -8,7 +8,7 @@
 
 general {
         colors = false
-        interval = 1
+        interval = 10
 }
 
 order += "ipv6"
@@ -32,11 +32,11 @@ ethernet _first_ {
 }
 
 battery all {
-        format = "%status %percentage %remaining"
+        format = "%status %percentage"
 }
 
 tztime local {
-        format = "%Y-%m-%d %H:%M"
+        format = "%a %x %H:%M"
 }
 
 load {
