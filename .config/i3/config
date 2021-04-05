@@ -17,7 +17,7 @@ set $mod Mod4
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 8
+font pango:Source Code Pro 8
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -167,6 +167,9 @@ bindsym $mod+r mode "resize"
 bindsym $mod+shift+x exec i3lock --color "#000000"
 # nautilus on win+g
 bindsym $mod+g exec nautilus
+bindsym Print exec xfce4-screenshooter -fs ~/sshots
+bindsym Shift+Print exec xfce4-screenshooter -rs ~/sshots
+bindsym Control+Print exec xfce4-screenshooter -ws ~/sshots
 
 # ALSA keybinds
 # bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 5+ unmute"
