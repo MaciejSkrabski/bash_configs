@@ -122,9 +122,9 @@ if ! shopt -oq posix; then
 fi
 
 # disable BEEEEP!!!
-if [ -n "$DISPLAY" ]; then
-  xset b off
-fi
+# if [ -n "$DISPLAY" ]; then
+#   xset b off
+# fi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -141,4 +141,4 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-source "$HOME/.cargo/env"
+# source "$HOME/.cargo/env"

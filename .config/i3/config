@@ -9,6 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+exec feh --bg-fill ~/Pictures/stairs.jpg 
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -30,7 +31,7 @@ font pango:Source Code Pro 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec gnome-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -183,17 +184,19 @@ bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
 
 # assigns
 assign [class="(?i)xfce4-terminal"] $ws1
-assign [class="Firefox-esr"] $ws2
+assign [class="(?i)firefox"] $ws2
 # assign [class="(?i)spotify"] $ws10
 # due to bug the above ^ doesn't work
 # so I need to use for_window
 for_window [class="(?i)spotify"] move container to workspace $ws10
 
 # colors
-set $bg-color            #2f343f
+set $black		 #ffffff
+set $bg-color            #172549
 set $text-color          #f3f4f5
 set $inactive-text-color #676E7D
 set $urgent-bg-color	 #E53935
+
 
 # apply colors          border           #background       text                 indicator
 client.focused	        $bg-color        $bg-color         $text-color          #00ff00
