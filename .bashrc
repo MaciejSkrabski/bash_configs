@@ -141,4 +141,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+export PATH=/home/malbik/.cargo/bin:$PATH
 # source "$HOME/.cargo/env"

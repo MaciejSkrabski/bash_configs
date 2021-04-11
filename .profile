@@ -28,3 +28,4 @@ fi
 
 # [[ "$(tty)" = '/dev/tty1' ]] && exec startx && exit
 # source "$HOME/.cargo/env"
+export GPG_TTY=$(tty)

@@ -104,7 +104,7 @@ set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
-set $ws9 "9"
+set $ws9 "9: code"
 set $ws10 "10: Spotify"
 
 # switch to workspace
@@ -184,7 +184,9 @@ bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
 
 # assigns
 assign [class="(?i)xfce4-terminal"] $ws1
+assign [class="(?i)gnome-terminal"] $ws1
 assign [class="(?i)firefox"] $ws2
+assign [class="(?i)code"] $ws9
 # assign [class="(?i)spotify"] $ws10
 # due to bug the above ^ doesn't work
 # so I need to use for_window
