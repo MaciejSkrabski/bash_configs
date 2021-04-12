@@ -98,7 +98,7 @@ bindsym $mod+a focus parent
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1: Terminals"
 set $ws2 "2: FF"
-set $ws3 "3"
+set $ws3 "3: Comms"
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
@@ -184,7 +184,9 @@ bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
 
 # assigns
 assign [class="(?i)xfce4-terminal"] $ws1
+assign[class="Gnome-terminal"] $ws1
 assign [class="(?i)firefox"] $ws2
+assign [class="(?i)slack"] $ws3
 # assign [class="(?i)spotify"] $ws10
 # due to bug the above ^ doesn't work
 # so I need to use for_window
