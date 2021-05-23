@@ -121,10 +121,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# disable BEEEEP!!!
-# if [ -n "$DISPLAY" ]; then
-#   xset b off
-# fi
+# source "$HOME/.cargo/env"
+export PATH=/home/$USER/.cargo/bin:$PATH
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -140,5 +138,4 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-conda activate py38
-# source "$HOME/.cargo/env"
+

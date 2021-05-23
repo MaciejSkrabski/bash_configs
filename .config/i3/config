@@ -10,6 +10,8 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 exec feh --bg-fill ~/Pictures/stairs.jpg 
+exec xinput set-prop 12 312 1
+
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -194,7 +196,7 @@ assign [class="(?i)code"] $ws9
 for_window [class="(?i)spotify"] move container to workspace $ws10
 
 # colors
-set $black		 #ffffff
+set $black		 #000000
 set $bg-color            #172549
 set $text-color          #f3f4f5
 set $inactive-text-color #676E7D
@@ -214,10 +216,11 @@ hide_edge_borders both
 bar {
     status_command i3status
     colors {
- 	    background $bg-color
-	    separator #757575
+ 	    background $black
+	    statusline $text-color
+	    separator $inactive-text-color
  	    focused_workspace $bg-color $bg-color $text-color
-            inactive_workspace $bg-color $bg-color $inactive-text-color
+            inactive_workspace $bg-color $black $inactive-text-color
  	    urgent_workspace $urgent-bg-color $urgent-bg-color $text-color
     }
 }
