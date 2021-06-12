@@ -1,5 +1,5 @@
 spongebob() { 
-    python3.8 ~/.spongebob.py "$1" 
+    python3 ~/.spongebob.py "$1" 
 }
 
 cdls() {

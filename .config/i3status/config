@@ -29,7 +29,7 @@ battery all {
         format = "%status %percentage %emptytime %remaining"
 	integer_battery_capacity = true
 	status_chr = ⚡
-	status_bat =  🔋
+	status_bat =  bat
 	status_unk =  ?
 	status_full =  ☻
 	low_threshold = 30

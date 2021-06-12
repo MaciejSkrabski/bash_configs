@@ -26,6 +26,3 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-# [[ "$(tty)" = '/dev/tty1' ]] && exec startx && exit
-# source "$HOME/.cargo/env"
-export GPG_TTY=$(tty)

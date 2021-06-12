@@ -33,7 +33,7 @@ font pango:Source Code Pro 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -168,11 +168,12 @@ mode "resize" {
 # binds
 bindsym $mod+r mode "resize"
 bindsym $mod+shift+x exec i3lock --color "#000000"
-# nautilus on win+g
-bindsym $mod+g exec nautilus
-bindsym Print exec xfce4-screenshooter -fs ~/sshots
-bindsym Shift+Print exec xfce4-screenshooter -rs ~/sshots
-bindsym Control+Print exec xfce4-screenshooter -ws ~/sshots
+# file explorer on win+g
+bindsym $mod+g exec caja
+bindsym Print exec mate-screenshot
+bindsym Shift+Print exec mate-screenshot -ia
+bindsym Control+Print exec mate-screenshot -w
+bindsym Control+Shift+Print exec mate-screenshot -i
 
 # ALSA keybinds
 # bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 5+ unmute"
@@ -197,9 +198,9 @@ for_window [class="(?i)spotify"] move container to workspace $ws10
 
 # colors
 set $black		 #000000
-set $bg-color            #172549
-set $text-color          #f3f4f5
-set $inactive-text-color #676E7D
+set $bg-color            #121212
+set $text-color          #f3e5ab
+set $inactive-text-color #999999 
 set $urgent-bg-color	 #E53935
 
 
@@ -216,11 +217,11 @@ hide_edge_borders both
 bar {
     status_command i3status
     colors {
- 	    background $black
+ 	    background $bg-color
 	    statusline $text-color
-	    separator $inactive-text-color
+	    separator $bg-color
  	    focused_workspace $bg-color $bg-color $text-color
-            inactive_workspace $bg-color $black $inactive-text-color
+            inactive_workspace $bg-color $bg-color $inactive-text-color
  	    urgent_workspace $urgent-bg-color $urgent-bg-color $text-color
     }
 }
