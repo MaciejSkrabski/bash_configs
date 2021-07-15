@@ -9,9 +9,6 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-exec feh --bg-fill ~/Pictures/stairs.jpg 
-exec xinput set-prop 12 312 1
-
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -20,7 +17,7 @@ set $mod Mod4
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:Source Code Pro 8
+font pango:Source Code Pro Medium 8
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -167,7 +164,7 @@ mode "resize" {
 
 # binds
 bindsym $mod+r mode "resize"
-bindsym $mod+shift+x exec i3lock --color "#000000"
+bindsym $mod+shift+x exec i3lock --color "#000000" & sleep 1 && xset dpms force off
 # file explorer on win+g
 bindsym $mod+g exec caja
 bindsym Print exec mate-screenshot
@@ -175,10 +172,6 @@ bindsym Shift+Print exec mate-screenshot -ia
 bindsym Control+Print exec mate-screenshot -w
 bindsym Control+Shift+Print exec mate-screenshot -i
 
-# ALSA keybinds
-# bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 5+ unmute"
-# bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 5- unmute"
-# bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
 
 # PulseAudio keybinds
 bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 +5%"
@@ -197,22 +190,21 @@ assign [class="(?i)code"] $ws9
 for_window [class="(?i)spotify"] move container to workspace $ws10
 
 # colors
-set $black		 #000000
-set $bg-color            #121212
-set $text-color          #f3e5ab
-set $inactive-text-color #999999 
-set $urgent-bg-color	 #E53935
+set_from_resource $bg-color i3wm.color7 #121212
+set_from_resource $text-color i3wm.color0 #f3e5ab
+set_from_resource $inactive-text-color i3wm.color8 #999999 
+set_from_resource $urgent-bg-color i3wm.color1 #e53935
 
 
-# apply colors          border           #background       text                 indicator
-client.focused	        $bg-color        $bg-color         $text-color          #00ff00
-client.unfocused        $bg-color        $bg-color         $inactive-text-color #00ff00
-client.focused_inactive $bg-color        $bg-color         $inactive-text-color #00ff00
-client.urgent           $urgent-bg-color $urgent-bg-color  $text-color          #00ff00
+# apply colors          border           background       text                 indicator
+client.focused	        $bg-color        $bg-color        $text-color          #666666
+client.unfocused        $bg-color        $bg-color        $inactive-text-color #666666
+client.focused_inactive $bg-color        $bg-color        $inactive-text-color #666666
+client.urgent           $urgent-bg-color $urgent-bg-color  $text-color          #666666
 
 # misc
-hide_edge_borders both
-# Start i3bar to display a workspace bar (plus the system information i3status
+default_border pixel
+# start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
     status_command i3status
