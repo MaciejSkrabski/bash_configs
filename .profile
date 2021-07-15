@@ -26,3 +26,5 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+# set wallpaper
+feh --bg-fill ~/Walls/rainy.jpg
