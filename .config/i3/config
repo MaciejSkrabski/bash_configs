@@ -9,7 +9,12 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+# set wallpaper
+exec_always ~/.fehbg;
+
 set $mod Mod4
+set $explorer thunar
+set $sshot maim
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -37,11 +42,11 @@ bindsym $mod+Shift+q kill
 bindsym $mod+F4 kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+# bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+h focus left
@@ -135,7 +140,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'tExit i3wm? Kills X session and its apps.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -162,16 +167,21 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
-# binds
+################################################
+#
+#		 binds
+#
+################################################
 bindsym $mod+r mode "resize"
 bindsym $mod+shift+x exec i3lock --color "#000000" & sleep 1 && xset dpms force off
 # file explorer on win+g
-bindsym $mod+g exec caja
-bindsym Print exec mate-screenshot
-bindsym Shift+Print exec mate-screenshot -ia
-bindsym Control+Print exec mate-screenshot -w
-bindsym Control+Shift+Print exec mate-screenshot -i
+bindsym $mod+g exec $explorer
 
+# screenshots
+bindsym Print exec $sshot -ou ~/Sshots/$(date +%s).png
+bindsym Shift+Print exec $sshot -osu ~/Sshots/selected_$(date +%s).png
+bindsym Control+Print exec $sshot -oi $(xdotool getactivewindow) ~/Sshots/window_$(date +$%s).png
+bindsym Shift+Control+Print exec $sshot -osu | xclip -selection clipboard -t image/png
 
 # PulseAudio keybinds
 bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 +5%"
@@ -181,8 +191,11 @@ bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
 # assigns
 assign [class="(?i)xfce4-terminal"] $ws1
 assign [class="(?i)gnome-terminal"] $ws1
+assign [class="(?i)urxvt"] $ws1
 assign [class="(?i)firefox"] $ws2
 assign [class="(?i)slack"] $ws3
+assign [class="(?i)element"] $ws3
+assign [class="(?i)thunderbird"] $ws3
 assign [class="(?i)code"] $ws9
 # assign [class="(?i)spotify"] $ws10
 # due to bug the above ^ doesn't work
