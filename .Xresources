@@ -1,45 +1,13 @@
-!! wygląd URxvt
-URxvt*font: xft:Source Code Pro Medium:size=10
-URxvt*scrollBar: false
-URxvt*fading: 30
-!! URxvt*visualBell: true
-URxvt*saveLines: 0
-URxvt*perl-ext:
-URxvt*perl-ext-common:
+!! Xft.dpi:                96
+Xft.antialias:          true
+Xft.hinting:            full
+*font:                  xft:Fira Code Medium:size=10
 
-! special
-*.foreground:   #68615e
-*.background:   #f1efee
-*.cursorColor:  #68615e
+!urxvt
+#include ".Xresources.d/urxvt"
 
-! black
-*.color0:       #1b1918
-*.color8:       #766e6b
 
-! red
-*.color1:       #f22c40
-*.color9:       #f22c40
-
-! green
-*.color2:       #5ab738
-*.color10:      #5ab738
-
-! yellow
-*.color3:       #d5911a
-*.color11:      #d5911a
-
-! blue
-*.color4:       #407ee7
-*.color12:      #407ee7
-
-! magenta
-*.color5:       #6666ea
-*.color13:      #6666ea
-
-! cyan
-*.color6:       #00ad9c
-*.color14:      #00ad9c
-
-! white
-*.color7:       #a8a19f
-*.color15:      #f1efee
+! old color
+#include ".Xresources.d/colors/mylight"
+! new colors
+! #include ".Xresources.d/colors/dark"
