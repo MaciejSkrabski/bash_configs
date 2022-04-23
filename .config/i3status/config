@@ -22,11 +22,11 @@ wireless _first_ {
 }
 ethernet _first_ {
         # if you use %speed, i3status requires root privileges
-        format_up = "E: %ip (%speed)"
+        format_up = "E: %ip"
         format_down = "E: down"
 }
 battery all {
-        format = "%status %percentage %emptytime %remaining"
+	format = "%status %percentage"
 	integer_battery_capacity = true
 	status_chr = ⚡
 	status_bat =  bat
@@ -35,12 +35,9 @@ battery all {
 	low_threshold = 30
 	threshold_type = time
 }
-tztime local {
-        format = "%a %x %H:%M"
-}
-load {
-        format = "%1min"
-}
+
+tztime local {format = "%a %x %H:%M"}
+load {format = "%1min"}
 volume master {
     format = "♪ %volume"
     format_muted = "MUTE"

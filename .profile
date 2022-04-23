@@ -27,5 +27,5 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 export TERMINAL=urxvt
-export TERM=linux
+export TERM=xterm-256color
 
