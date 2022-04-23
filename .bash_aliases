@@ -1,4 +1,4 @@
-alias uu="sudo pacman -Syuu"
+alias uu="sudo pacman -Syu"
 alias cs=cdls
 alias brc="source ~/.bashrc"
 alias cls="clear"
