@@ -1,13 +1,15 @@
-!! Xft.dpi:                96
+Xft.dpi:                96
 Xft.antialias:          true
 Xft.hinting:            full
-*font:                  xft:Fira Code Medium:size=10
+! *font:                  xft:Fira Code Medium:size=8
+*font:			xft:Source Code Pro:size=9
 
 !urxvt
 #include ".Xresources.d/urxvt"
 
-
-! old color
-#include ".Xresources.d/colors/mylight"
-! new colors
+! #include ".Xresources.d/colors/baskerville_lost_woods"
+! #include ".Xresources.d/colors/mylight"
+! #include ".Xresources.d/colors/tango"
+#include ".Xresources.d/colors/embers"
 ! #include ".Xresources.d/colors/dark"
+! #include ".Xresources.d/colors/24"

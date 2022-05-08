@@ -10,10 +10,11 @@ exec --no-startup-id ~/.fehbg;
 
 # Mod4 = Win/Super Key
 set $mod Mod4
-set $explorer thunar
+set $explorer nemo
 set $sshot maim
 
-font pango:Source Code Pro Medium 8
+# font pango:Source Code Pro Medium 9
+font pango:Fira Code Medium 8
 
 floating_modifier $mod
 bindsym $mod+Return exec i3-sensible-terminal
