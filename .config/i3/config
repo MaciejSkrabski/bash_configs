@@ -2,22 +2,25 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+# start urxvt daemon
+exec --no-startup-id urxvtd -q -f -o
+
 # set wallpaper
 exec --no-startup-id ~/.fehbg;
 
 # Start nm-applet for internet connections
-# exec --no-startup-id nm-applet
+exec --no-startup-id nm-applet
 
 # Mod4 = Win/Super Key
 set $mod Mod4
 set $explorer nemo
 set $sshot maim
 
-# font pango:Source Code Pro Medium 9
-font pango:Fira Code Medium 8
+font pango:Fira Code 7
 
 floating_modifier $mod
-bindsym $mod+Return exec i3-sensible-terminal
+# bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec urxvtc
 bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
@@ -177,7 +180,7 @@ bar {
     status_command i3status
     colors {
  	    background	       $bg-color
-	    statusline         $text-color
+	    statusline         $focused-workspace-color
 	    separator          $bg-color
  	    focused_workspace  $bg-color $bg-color $focused-workspace-color
             inactive_workspace $bg-color $bg-color $inactive-text-color

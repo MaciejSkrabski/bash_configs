@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --no-fehbg --bg-fill --randomize ~/Walls/*
+while true; do feh --no-fehbg --bg-fill --randomize /home/malbik/Walls/*; sleep 900; done

@@ -1,3 +1,20 @@
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim' " required
+
+Plugin 'tpope/vim-fugitive'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'cjrh/vim-conda'
+
+call vundle#end()            " required
+
 " line numbers
 set nu
 
@@ -32,9 +49,6 @@ set ruler
  
 " Always display the status line, even if only one window is displayed
 set laststatus=2
-
-" The future is now old man
-set nocompatible
 
 " Search folders recursively
 set path+=**
