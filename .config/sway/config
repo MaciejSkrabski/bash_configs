@@ -2,25 +2,32 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-# set wallpaper
-exec --no-startup-id ~/.fehbg;
+input * {
+    xkb_layout "pl"
+}
 
-# Start nm-applet for internet connections
-exec --no-startup-id nm-applet
+input "1:1:AT_Translated_Set_2_keyboard" xkb_model "latitude"
 
 # Mod4 = Win/Super Key
 set $mod Mod4
 set $explorer thunar
 set $sshot maim
 
-font pango:Fira Code 9
-# font pango:Source Code Pro 11
+font pango: Noto Sans Bold 8
 
 floating_modifier $mod
-# bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec urxvtc
+
+bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec --no-startup-id bemenu-run \
+        --fn 'Fira Code 10' \
+        -p '' \
+        -W 0.13 \
+        -M 5 \
+        --hp 8 \
+        -l 16 \
+        -f \
+        -c
 
 # vimlike traversing
 bindsym $mod+h focus left
@@ -92,7 +99,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3wm? Kills X session and its apps.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "swaynag -t warning -m 'Exit session?' -B 'Yes' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -125,15 +132,15 @@ mode "resize" {
 #
 ################################################
 bindsym $mod+r		    mode "resize"
-bindsym $mod+shift+x	    exec dm-tool lock
-#bindsym $mod+shift+x	    exec i3lock --color "#000000" & sleep 1 && xset dpms force off
+bindsym $mod+shift+x	    exec swaylock --color 000000 -f -e -F
+# && xset dpms force off
 # file explorer on win+g
 bindsym $mod+g		    exec $explorer
 
 # screenshots
 bindsym Print		    exec $sshot -ou ~/Sshots/$(date +%s).png
 bindsym Shift+Print	    exec $sshot -osu ~/Sshots/selected_$(date +%s).png
-bindsym Control+Print       exec $sshot -oi $(xdotool getactivewindow) ~/Sshots/window_$(date +$%s).png
+bindsym Control+Print       exec $sshot -oi$(xdotool getactivewindow) ~/Sshots/window_$(date +$%s).png
 bindsym Shift+Control+Print exec $sshot -osu | xclip -selection clipboard -t image/png
 
 # PulseAudio keybinds
@@ -146,37 +153,30 @@ assign [class="(?i)xfce4-terminal"] $ws1
 assign [class="(?i)gnome-terminal"] $ws1
 assign [class="(?i)urxvt"]	    $ws1
 assign [class="(?i)firefox"]	    $ws2
-assign [class="(?i)slack"]	    $ws3
-assign [class="(?i)element"]	    $ws3
-assign [class="(?i)thunderbird"]    $ws3
+assign [class="(?i)(slack|element|discord|thunderbird)"]	    $ws3
+# assign [class="(?i)element"]	    $ws3
+# assign [class="(?i)element"]	    $ws3
+# assign [class="(?i)thunderbird"]    $ws3
 assign [class="(?i)code"]	    $ws9
 # assign [class="(?i)spotify"]      $ws10
 # due to bug the above ^ doesn't work
 # so I need to use for_window
 for_window [class="(?i)spotify"]    move container to workspace $ws10
 
-
-# colors
-set_from_resource $bg-color 	           i3wm.background #121212
-set_from_resource $text-color 	           i3wm.foreground #f3e5ab
-set_from_resource $inactive-text-color     i3wm.color8     #999999 
-set_from_resource $urgent-bg-color	   i3wm.color1     #e53935
-set_from_resource $focused-workspace-color i3wm.color11    #f3e5ab
-# set $focused-workspace-color #000000
-
-
-# apply colors          border           background       text                 indicator
-client.focused	        $bg-color        $bg-color        $text-color          #666666
-client.unfocused        $bg-color        $bg-color        $inactive-text-color #666666
-client.focused_inactive $bg-color        $bg-color        $inactive-text-color #666666
-client.urgent           $urgent-bg-color $urgent-bg-color $text-color          #666666
+set $bg-color #121212
+set $text-color #f3e5ab
+set $inactive-text-color #999999 
+set $urgent-bg-color #e53935
+set $focused-workspace-color #f3e5ab
 
 # misc
-default_border 1pixel
-# start i3bar to display a workspace bar (plus the system information i3status
+#default_border pixel 1
+default_border none
+# workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
     status_command i3status
+    position top
     colors {
  	    background	       $bg-color
 	    statusline         $focused-workspace-color
@@ -187,3 +187,7 @@ bar {
     }
 }
 
+# set wallpaper
+output "*" bg "~/Walls/tea.jpg" fill
+# Start nm-applet for internet connections
+#exec --no-startup-id nm-applet
