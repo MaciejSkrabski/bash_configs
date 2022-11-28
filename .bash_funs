@@ -12,8 +12,13 @@ cdls() {
 }
 
 snapclear() {
-snap list --all | awk '/disabled/{print $1, $3}' |
-	    while read snapname revision; do
-		sudo snap remove "$snapname" --revision="$revision"
-	    done
+    snap list --all | awk '/disabled/{print $1, $3}' |
+        while read snapname revision; do
+            sudo snap remove "$snapname" --revision="$revision"
+                done
+}
+
+new_iitis_vpn() {
+    cd ~/iitis-vpn
+    sudo openvpn --config newiitisvpn.ovpn
 }
