@@ -17,6 +17,29 @@ font pango: Noto Sans Bold 8
 
 floating_modifier $mod
 
+set $lock swaylock --color 000000 -f -e -F
+# lock screen on lid closed
+bindswitch --reload --locked lid:on exec $lock
+
+# gnome keyring and ssh agent
+exec dbus-update-activation-environment \
+    DISPLAY \
+    XAUTHORITY \
+    WAYLAND_DISPLAY
+# exec gnome-keyring-daemon --start --components=secrets
+# lock screen after 5min inactivity
+exec swayidle -w \
+        lock 'swaymsg "output * dpms off"' \
+        unlock 'swaymsg "output * dpms on"' \
+
+        # timeout 300 'swaymsg "output * dpms off"' \
+        #     resume 'swaymsg "output * dpms on"' \
+        # timeout 305 '$lock' \
+        # timeout 900 'systemctl suspend' \
+        before-sleep '$lock' \
+
+
+
 bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id bemenu-run \
@@ -99,7 +122,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "swaynag -t warning -m 'Exit session?' -B 'Yes' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "swaynag -t warning -m 'Exit session?' -B 'Yes' 'swaymsg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -132,8 +155,10 @@ mode "resize" {
 #
 ################################################
 bindsym $mod+r		    mode "resize"
-bindsym $mod+shift+x	    exec swaylock --color 000000 -f -e -F
-# && xset dpms force off
+bindsym $mod+shift+x exec $lock
+
+# Locks the screen immediately
+
 # file explorer on win+g
 bindsym $mod+g		    exec $explorer
 
@@ -147,6 +172,9 @@ bindsym Shift+Control+Print exec $sshot -osu | xclip -selection clipboard -t ima
 bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 +5%"
 bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -5%"
 bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
 # assigns
 assign [class="(?i)xfce4-terminal"] $ws1
@@ -170,8 +198,8 @@ set $urgent-bg-color #e53935
 set $focused-workspace-color #f3e5ab
 
 # misc
-#default_border pixel 1
-default_border none
+default_border pixel 1
+# default_border none
 # workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
