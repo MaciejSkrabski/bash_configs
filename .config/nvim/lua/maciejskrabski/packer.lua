@@ -7,4 +7,6 @@ return require('packer').startup(function(use)
   use 'tpope/vim-fugitive'
   use 'cjrh/vim-conda'
   use 'neovim/nvim-lspconfig'
+  use 'rafi/awesome-vim-colorschemes'
+  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 end)
