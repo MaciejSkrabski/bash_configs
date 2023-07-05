@@ -5,7 +5,6 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
   use 'tpope/vim-fugitive'
-  use 'cjrh/vim-conda'
   use 'neovim/nvim-lspconfig'
   use 'rafi/awesome-vim-colorschemes'
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
