@@ -17,27 +17,23 @@ font pango: Noto Sans Bold 8
 
 floating_modifier $mod
 
-set $lock swaylock --color 000000 -f -e -F
-# lock screen on lid closed
-bindswitch --reload --locked lid:on exec $lock
-
 # gnome keyring and ssh agent
 exec dbus-update-activation-environment \
     DISPLAY \
     XAUTHORITY \
     WAYLAND_DISPLAY
+
 # exec gnome-keyring-daemon --start --components=secrets
-# lock screen after 5min inactivity
+set $lock swaylock --color 000000 -f -e -F
+
+bindsym $mod+shift+x exec bash ~/.config/sway/lock.sh
+# lock screen on lid closed
+bindswitch --reload --locked lid:on exec $lock
+
 exec swayidle -w \
         lock 'swaymsg "output * dpms off"' \
         unlock 'swaymsg "output * dpms on"' \
-
-        # timeout 300 'swaymsg "output * dpms off"' \
-        #     resume 'swaymsg "output * dpms on"' \
-        # timeout 305 '$lock' \
-        # timeout 900 'systemctl suspend' \
         before-sleep '$lock' \
-
 
 
 bindsym $mod+Return exec alacritty
@@ -119,9 +115,9 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+# restart sway inplace (preserves your layout/session, can be used to upgrade sway)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
+# exit sway (logs you out of your wayland session)
 bindsym $mod+Shift+e exec "swaynag -t warning -m 'Exit session?' -B 'Yes' 'swaymsg exit'"
 
 # resize window (you can also use the mouse for that)
@@ -155,9 +151,6 @@ mode "resize" {
 #
 ################################################
 bindsym $mod+r		    mode "resize"
-bindsym $mod+shift+x exec $lock
-
-# Locks the screen immediately
 
 # file explorer on win+g
 bindsym $mod+g		    exec $explorer
@@ -177,18 +170,12 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # assigns
-assign [class="(?i)xfce4-terminal"] $ws1
-assign [class="(?i)gnome-terminal"] $ws1
+assign [class="(?i)(xfce4|gnome)-terminal"] $ws1
 assign [class="(?i)urxvt"]	    $ws1
 assign [class="(?i)firefox"]	    $ws2
 assign [class="(?i)(slack|element|discord|thunderbird)"]	    $ws3
-# assign [class="(?i)element"]	    $ws3
-# assign [class="(?i)element"]	    $ws3
-# assign [class="(?i)thunderbird"]    $ws3
-assign [class="(?i)code"]	    $ws9
-# assign [class="(?i)spotify"]      $ws10
-# due to bug the above ^ doesn't work
-# so I need to use for_window
+assign [class="(?i)ardour"]	    $ws4
+assign [class="(?i)keepassxc"]	    $ws9
 for_window [class="(?i)spotify"]    move container to workspace $ws10
 
 set $bg-color #121212
@@ -198,7 +185,7 @@ set $urgent-bg-color #e53935
 set $focused-workspace-color #f3e5ab
 
 # misc
-default_border pixel 1
+default_border none
 # default_border none
 # workspace bar (plus the system information i3status
 # finds out, if available)
@@ -210,12 +197,10 @@ bar {
 	    statusline         $focused-workspace-color
 	    separator          $bg-color
  	    focused_workspace  $bg-color $bg-color $focused-workspace-color
-            inactive_workspace $bg-color $bg-color $inactive-text-color
+        inactive_workspace $bg-color $bg-color $inactive-text-color
  	    urgent_workspace   $urgent-bg-color $urgent-bg-color $text-color
     }
 }
 
 # set wallpaper
 output "*" bg "~/Walls/tea.jpg" fill
-# Start nm-applet for internet connections
-#exec --no-startup-id nm-applet
