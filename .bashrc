@@ -114,6 +114,7 @@ fi
 # source "$HOME/.cargo/env"
 export PATH=/home/$USER/.cargo/bin:$PATH
 
+export SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
