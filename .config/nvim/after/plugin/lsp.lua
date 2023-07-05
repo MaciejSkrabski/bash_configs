@@ -37,50 +37,18 @@ local lsp_flags = {
     debounce_text_changes = 150,
 }
 
---[[
-require'lspconfig'.pylsp.setup{
-    on_attach = on_attach,
-    flags = lsp_flags,
-    settings = {
-        pylsp = {
-            plugins = {
-                autopep8 = {enabled = false},
-                bandit = {enabled = false},
-                black = {
-                    enabled = true,
-                    line_length = 100
-                },
-                flake8 = {
-                    enabled = true,
-                    maxLineLength = 100
-                },
-                jedi_completion = {
-                    enabled = true,
-                    eager = true,
-                    fuzzy = true
-                },
-                mccabe = {enabled = false},
-                mypy = {
-                    enabled = true,
-                    live_mode = false,
-                    dmypy = true
-                },
-                pycodestyle = {enabled = false},
-                pydocstyle = {enabled = false},
-                pyflakes = {enabled = false},
-                pylint = {
-                    enabled = true,
-                    args = {"-j 4"}},
-                yapf = {enabled = false},
-            }
-        }
-    }
-}
---]]
-
 require'lspconfig'.pyright.setup{
     on_attach = on_attach,
     flags = lsp_flags,
+    python = {
+        analysis = {
+            autoSearchPaths = true,
+            autoImportCompletions = false,
+            typeCheckingMode = "strict",
+            diagnosticMode = "workspace",
+            useLibraryCodeForTypes = true,
+        }
+    }
 }
 
 require('lspconfig')['rust_analyzer'].setup{
