@@ -112,26 +112,24 @@ if ! shopt -oq posix; then
 fi
 
 # source "$HOME/.cargo/env"
-export PATH=/home/$USER/.cargo/bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
 
 export SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/$USER/mambaforge/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+
+# >>> mamba initialize >>>
+# !! Contents within this block are managed by 'mamba init' !!
+export MAMBA_EXE="$HOME/.local/bin/micromamba";
+export MAMBA_ROOT_PREFIX="$HOME/micromamba";
+__mamba_setup="$("$MAMBA_EXE" shell hook --shell bash --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
 if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
+    eval "$__mamba_setup"
 else
-    if [ -f "/home/$USER/mambaforge/etc/profile.d/conda.sh" ]; then
-        . "/home/$USER/mambaforge/etc/profile.d/conda.sh"
+    if [ -f "$HOME/micromamba/etc/profile.d/micromamba.sh" ]; then
+        . "$HOME/micromamba/etc/profile.d/micromamba.sh"
     else
-        export PATH="/home/$USER/mambaforge/bin:$PATH"
+        export  PATH="$HOME/micromamba/bin:$PATH"  # extra space after export prevents interference from conda init
     fi
 fi
-unset __conda_setup
-
-if [ -f "/home/$USER/mambaforge/etc/profile.d/mamba.sh" ]; then
-    . "/home/$USER/mambaforge/etc/profile.d/mamba.sh"
-fi
-# <<< conda initialize <<<
-
+unset __mamba_setup
+# <<< mamba initialize <<<
