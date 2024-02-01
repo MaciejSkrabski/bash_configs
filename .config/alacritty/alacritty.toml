@@ -1,0 +1,19 @@
+#import = [ "~/.config/alacritty/alacritty-theme/themes/ayu_dark.toml" ]
+#import = [ "~/.config/alacritty/alacritty-theme/themes/blood_moon.toml" ]
+import = [ "~/.config/alacritty/alacritty-theme/themes/gotham.toml" ]
+
+
+[window]
+opacity = 1.0
+decorations = "None"
+startup_mode = "Windowed"
+
+[window.dimensions]
+columns = 80
+lines = 30
+
+[font]
+size = 12
+
+[font.normal]
+family = "SauceCodePro Nerd Font Mono"
