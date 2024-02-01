@@ -111,25 +111,29 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# source "$HOME/.cargo/env"
+
+export PATH=/usr/local/texlive/2023/bin/x86_64-linux:$PATH
+export MANPATH=/usr/local/texlive/2023/texmf-dist/doc/man:$MANPATH
+export INFOPATH=/usr/local/texlive/2023/texmf-dist/doc/inf:INFOPATH
 export PATH=$HOME/.cargo/bin:$PATH
 
 export SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
 
+export PIPEWIRE_LATENCY=128/44100
 
 # >>> mamba initialize >>>
 # !! Contents within this block are managed by 'mamba init' !!
-export MAMBA_EXE="$HOME/.local/bin/micromamba";
-export MAMBA_ROOT_PREFIX="$HOME/micromamba";
+export MAMBA_EXE='/home/malbik/.local/bin/micromamba';
+export MAMBA_ROOT_PREFIX='/home/malbik/micromamba';
 __mamba_setup="$("$MAMBA_EXE" shell hook --shell bash --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__mamba_setup"
 else
-    if [ -f "$HOME/micromamba/etc/profile.d/micromamba.sh" ]; then
-        . "$HOME/micromamba/etc/profile.d/micromamba.sh"
-    else
-        export  PATH="$HOME/micromamba/bin:$PATH"  # extra space after export prevents interference from conda init
-    fi
+    alias micromamba="$MAMBA_EXE"  # Fallback on help from mamba activate
 fi
 unset __mamba_setup
 # <<< mamba initialize <<<
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
