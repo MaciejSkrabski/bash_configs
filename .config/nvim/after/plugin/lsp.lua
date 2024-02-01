@@ -6,11 +6,21 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
+vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+local navic = require("nvim-navic")
+navic.setup {
+    safe_output = true,
+}
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+    -- Navic context info
+    if client.server_capabilities.documentSymbolProvider then
+        navic.attach(client, bufnr)
+    end
 
     -- Mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -49,6 +59,11 @@ require'lspconfig'.pyright.setup{
             useLibraryCodeForTypes = true,
         }
     }
+}
+
+require'lspconfig'.texlab.setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
 }
 
 require('lspconfig')['rust_analyzer'].setup{

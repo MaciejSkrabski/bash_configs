@@ -12,6 +12,8 @@ vim.opt.incsearch = true
 
 vim.opt.smartindent = true
 
-vim.opt.wrap = false
+vim.opt.wrap = true
+vim.opt.linebreak = true
+
 vim.opt.path = vim.opt.path + "**"
 
