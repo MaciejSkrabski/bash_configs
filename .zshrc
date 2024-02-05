@@ -102,18 +102,18 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+    source ~/.bash_aliases
 fi
 
 # read my shell functions
 if [ -f ~/.bash_funs ]; then
-    . ~/.bash_funs
+    source ~/.bash_funs
 fi
 
 # >>> mamba initialize >>>
 # !! Contents within this block are managed by 'mamba init' !!
-export MAMBA_EXE='/home/malbik/.local/bin/micromamba';
-export MAMBA_ROOT_PREFIX='/home/malbik/micromamba';
+export MAMBA_EXE='/home/mskrabski/.local/bin/micromamba';
+export MAMBA_ROOT_PREFIX='/home/mskrabski/micromamba';
 __mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__mamba_setup"
