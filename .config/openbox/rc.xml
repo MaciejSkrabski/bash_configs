@@ -189,6 +189,16 @@
 <keyboard>
   <chainQuitKey>C-g</chainQuitKey>
 
+  <!-- lockscreen -->
+  <keybind key="W-S-x">
+    <action name="Execute">
+      <startupnotify>
+        <enabled>false</enabled>
+      </startupnotify>
+      <command>i3locklockscreen</command>
+    </action>
+  </keybind>
+
   <!-- Keybindings for desktop switching -->
   <keybind key="C-A-Left">
     <action name="GoToDesktop"><to>left</to><wrap>no</wrap></action>
