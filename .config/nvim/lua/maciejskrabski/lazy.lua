@@ -16,5 +16,5 @@ return require('lazy').setup({
   'neovim/nvim-lspconfig',
   'rafi/awesome-vim-colorschemes',
   {'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
-  { "SmiteshP/nvim-navic", dependencies = "neovim/nvim-lspconfig"}
+  {"SmiteshP/nvim-navic", dependencies = "neovim/nvim-lspconfig"},
 })
