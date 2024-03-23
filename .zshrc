@@ -123,8 +123,7 @@ fi
 unset __mamba_setup
 # <<< mamba initialize <<<
 #
-export PATH=/usr/local/texlive/2023/bin/x86_64-linux:$PATH
-export PATH=$HOME/.cargo/bin:$PATH
+export PATH=/usr/local/texlive/2023/bin/x86_64-linux:$HOME/.cargo/bin:$HOME/.local/bin:$PATH
 export MANPATH=/usr/local/texlive/2023/texmf-dist/doc/man:$MANPATH
 export INFOPATH=/usr/local/texlive/2023/texmf-dist/doc/inf:INFOPATH
 

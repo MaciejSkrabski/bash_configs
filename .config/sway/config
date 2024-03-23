@@ -9,7 +9,7 @@ set $mod Mod4
 set $explorer thunar
 set $sshot maim
 
-font pango: Noto Sans Bold 7
+font pango: SauceCodePro Nerd Font Mono Bold 7
 
 floating_modifier $mod
 
@@ -32,7 +32,7 @@ exec swayidle -w \
         before-sleep '$lock' \
 
 
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec foot
 bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id bemenu-run \
         --fn 'Fira Code 10' \
@@ -173,18 +173,6 @@ bindsym XF86AudioPrev exec playerctl previous
 # assigns
 for_window [window_role="dialog"] floating enable
 for_window [window_type="dialog"] floating enable
-#assign [class="(?i)(xfce4|gnome)-terminal"] $ws1
-#assign [app_id="(?i)alacritty"] $ws1
-#assign [class="(?i)urxvt"] $ws1
-#assign [app_id="(?i)firefox"] $ws2
-#assign [class="(?i)firefox"] $ws2
-#assign [class="(?i)(slack|element|discord|thunderbird)"] $ws3
-#assign [app_id="(?i)thunderbird"] $ws3
-#assign [class="(?i)ardour"] $ws4
-#assign [class="(?i)keepassxc"] $ws9
-#assign [app_id="org.keepassxc.KeePassXC"] $ws9
-#for_window [class="(?i)spotify"]    move container to workspace $ws10
-#assign [class="(?i)spotify"]	    $ws10
 
 set $bg-color #0a0f14
 set $text-color #edb54b

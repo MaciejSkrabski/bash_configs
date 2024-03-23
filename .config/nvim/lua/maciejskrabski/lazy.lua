@@ -14,7 +14,13 @@ vim.opt.rtp:prepend(lazypath)
 return require('lazy').setup({
   'tpope/vim-fugitive',
   'neovim/nvim-lspconfig',
-  'rafi/awesome-vim-colorschemes',
+  -- 'rafi/awesome-vim-colorschemes',
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
   {'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
   {"SmiteshP/nvim-navic", dependencies = "neovim/nvim-lspconfig"},
 })
