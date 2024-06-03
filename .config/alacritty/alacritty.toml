@@ -3,7 +3,7 @@ import = [ "~/.config/alacritty/alacritty-theme/themes/tokyo-night.toml" ]
 
 [window]
 opacity = 0.9
-decorations = "None"
+decorations = "Full"
 startup_mode = "Windowed"
 
 [window.dimensions]
@@ -11,7 +11,7 @@ columns = 80
 lines = 30
 
 [font]
-size = 12
+size = 11.25
 
 [font.normal]
 family = "SauceCodePro Nerd Font Mono"

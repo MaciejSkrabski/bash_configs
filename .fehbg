@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --no-fehbg --bg-fill --randomize /home/$USER/Walls/*
+feh --no-fehbg --bg-fill '$HOME/Walls/tea.jpg' 

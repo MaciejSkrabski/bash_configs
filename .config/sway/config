@@ -32,7 +32,7 @@ exec swayidle -w \
         before-sleep '$lock' \
 
 
-bindsym $mod+Return exec foot
+bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id bemenu-run \
         --fn 'Fira Code 10' \
@@ -145,17 +145,10 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
-################################################
-#
-#		 binds
-#
-################################################
 bindsym $mod+r		    mode "resize"
 
-# file explorer on win+g
 bindsym $mod+g		    exec $explorer
 
-# screenshots
 bindsym Print		    exec $sshot -ou ~/Sshots/$(date +%s).png
 bindsym Shift+Print	    exec $sshot -osu ~/Sshots/selected_$(date +%s).png
 bindsym Control+Print       exec $sshot -oi$(xdotool getactivewindow) ~/Sshots/window_$(date +$%s).png

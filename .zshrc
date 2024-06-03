@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="avit"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -126,6 +126,7 @@ unset __mamba_setup
 export PATH=/usr/local/texlive/2023/bin/x86_64-linux:$HOME/.cargo/bin:$HOME/.local/bin:$PATH
 export MANPATH=/usr/local/texlive/2023/texmf-dist/doc/man:$MANPATH
 export INFOPATH=/usr/local/texlive/2023/texmf-dist/doc/inf:INFOPATH
+export TERMINAL=/usr/bin/alacritty
 
 export SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
 export NVM_DIR="$HOME/.nvm"
@@ -133,4 +134,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
-export PIPEWIRE_LATENCY=128/44100
+export PIPEWIRE_LATENCY=512/48000
