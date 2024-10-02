@@ -61,10 +61,7 @@ require'lspconfig'.pyright.setup{
     }
 }
 
-require'lspconfig'.texlab.setup{
-    on_attach = on_attach,
-    flags = lsp_flags,
-}
+require'lspconfig'.gopls.setup{}
 
 require('lspconfig')['rust_analyzer'].setup{
     on_attach = on_attach,
