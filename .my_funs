@@ -1,0 +1,13 @@
+spongebob() { 
+    python3 ~/.spongebob.py "$1" 
+}
+
+cdls() {
+    if [ $# -eq 1 ]
+    then
+    	cd "$1" && ls -A  .
+    else
+    	cdls ~    
+    fi
+}
+
