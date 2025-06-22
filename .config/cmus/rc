@@ -2,3 +2,4 @@
 # set dsp.alsa.device=default
 # set mixer.alsa.device=default
 # set mixer.alsa.channel=Master
+colorscheme gruvbox-warm
