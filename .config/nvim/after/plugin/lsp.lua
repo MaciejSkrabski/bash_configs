@@ -71,3 +71,12 @@ require('lspconfig')['rust_analyzer'].setup{
         ["rust-analyzer"] = {}
     }
 }
+
+require'lspconfig'.yamlls.setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+    schemas = {
+                ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+    }
+}
+

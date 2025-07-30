@@ -10,7 +10,7 @@ vim.api.nvim_create_autocmd({"BufEnter","BufAdd","BufNew","BufNewFile","BufWinEn
 })
 
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "python", "rust", "go"},
+    ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "python", "rust", "go", "yaml"},
     highlight = {enable=true},
 }
 
