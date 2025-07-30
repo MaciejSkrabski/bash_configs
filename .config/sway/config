@@ -169,14 +169,6 @@ bindsym $mod+d exec --no-startup-id fuzzel \
     -w 50 \
     -l 30
 
-#bindsym $mod+d exec --no-startup-id wmenu-run \
-#        -f 'Fira Code 12' \
-#        -N  "$bg-color" \
-#        -n  "$text-color" \
-#        -S  "$text-color" \
-#        -s  "$bg-color" \
-#        -i
-
 bar {
     swaybar_command waybar
 }
