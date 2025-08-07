@@ -12,7 +12,7 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
 set $mod Mod4
 set $explorer dolphin
 
-font pango: Noto Sans Bold 9
+font pango: NotoSansM Nerd Font Mono 12
 floating_modifier $mod
 
 exec dbus-update-activation-environment \
@@ -159,15 +159,12 @@ bindsym XF86MonBrightnessDown exec "light -U 5"
 for_window [window_role="dialog"] floating enable
 for_window [window_type="dialog"] floating enable
 
-set $bg-color #0a0f14
-set $text-color #edb54b
+set $bg-color #1a1b26
+set $text-color #c0caf5
 set $inactive-text-color #195465
 set $urgent-bg-color #e53935
 
-bindsym $mod+d exec --no-startup-id fuzzel \
-    -I \
-    -w 50 \
-    -l 30
+bindsym $mod+d exec --no-startup-id fuzzel
 
 bar {
     swaybar_command waybar
