@@ -1,7 +1,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="bureau"
 HIST_STAMPS="yyyy-mm-dd"
-plugins=()
+plugins=(gpg-agent)
 source $ZSH/oh-my-zsh.sh
 
 [[ -f ~/.my_aliases ]] && source ~/.my_aliases
