@@ -47,36 +47,52 @@ local lsp_flags = {
     debounce_text_changes = 150,
 }
 
-require'lspconfig'.pyright.setup{
-    on_attach = on_attach,
-    flags = lsp_flags,
-    python = {
-        analysis = {
-            autoSearchPaths = true,
-            autoImportCompletions = false,
-            typeCheckingMode = "strict",
-            diagnosticMode = "workspace",
-            useLibraryCodeForTypes = true,
+vim.lsp.config('pyright', {
+    settings ={
+        python = {
+            analysis = {
+                autoSearchPaths = true,
+                autoImportCompletions = false,
+                typeCheckingMode = "strict",
+                diagnosticMode = "workspace",
+                useLibraryCodeForTypes = true,
+            }
         }
     }
-}
+})
 
-require'lspconfig'.gopls.setup{}
+vim.lsp.enable('pyright')
 
-require('lspconfig')['rust_analyzer'].setup{
-    on_attach = on_attach,
-    flags = lsp_flags,
-    -- Server-specific settings...
+vim.lsp.enable('gopls')
+
+vim.lsp.config('rust_analyzer', {
     settings = {
-        ["rust-analyzer"] = {}
+      ['rust-analyzer'] = {
+        diagnostics = {
+          enable = false;
+        }
+      }
     }
-}
+})
+vim.lsp.enable('rust_analyzer')
 
-require'lspconfig'.yamlls.setup{
-    on_attach = on_attach,
-    flags = lsp_flags,
-    schemas = {
-                ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+vim.lsp.config('yamlls', {
+    settings = {
+        yaml = {
+            schemas = {
+              ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+            },
+        },
+}})
+vim.lsp.enable('yamlls')
+
+vim.lsp.enable('ansiblels')
+
+
+vim.lsp.config('ruff', {
+    init_options = {
+        settings = { }
     }
-}
+})
 
+vim.lsp.enable('ruff')
