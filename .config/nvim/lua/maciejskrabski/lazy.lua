@@ -14,13 +14,12 @@ vim.opt.rtp:prepend(lazypath)
 return require('lazy').setup({
   'tpope/vim-fugitive',
   'neovim/nvim-lspconfig',
-  -- 'rafi/awesome-vim-colorschemes',
+  { 'folke/tokyonight.nvim', priority=1000, lazy=false},
   {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {},
+    'nvim-telescope/telescope.nvim', branch = '0.1.x',
+    dependencies = {
+        'nvim-lua/plenary.nvim',
+        'nvim-telescope/telescope-fzf-native.nvim', build='make'}
   },
-  {'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
-  {"SmiteshP/nvim-navic", dependencies = "neovim/nvim-lspconfig"},
+  {'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'}
 })

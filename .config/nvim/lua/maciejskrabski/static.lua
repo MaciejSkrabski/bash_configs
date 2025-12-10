@@ -17,3 +17,7 @@ vim.opt.linebreak = true
 
 vim.opt.path = vim.opt.path + "**"
 
+vim.g.netrw_banner = 0
+vim.g.netrw_liststyle = 3
+
+vim.g.mapleader = ';'
