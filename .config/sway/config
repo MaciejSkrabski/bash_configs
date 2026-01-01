@@ -123,12 +123,14 @@ bindsym $mod+Shift+r restart
 # exit sway (logs you out of your wayland session)
 bindsym $mod+Shift+e exec "swaynag -t warning -m 'Exit session?' -B 'Yes' 'swaymsg exit'"
 
+set $step 100
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width $step px
+        bindsym j resize grow height $step px
+        bindsym k resize shrink height $step px
+        bindsym l resize grow width $step px
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
@@ -154,15 +156,7 @@ bindsym shift+Print exec grim -g "$(slurp -d)" - | wl-copy -t image/png
 bindsym XF86AudioMute exec "pactl set-sink-mute @DEFAULT_SINK@ toggle"
 bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume @DEFAULT_SINK@ +2.5%"
 bindsym XF86AudioLowerVolume exec "pactl set-sink-volume @DEFAULT_SINK@ -2.5%"
-bindsym XF86AudioMicMute exec "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
-
-#brightness keybinds
-bindsym XF86MonBrightnessUp exec "light -A 5"
-bindsym XF86MonBrightnessDown exec "light -U 5"
-
+bindsym $mod+XF86AudioMute exec "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
 
 # assigns
 for_window [window_role="dialog"] floating enable
@@ -173,6 +167,7 @@ set $text-color #c0caf5
 set $inactive-text-color #195465
 set $urgent-bg-color #e53935
 
+#bindsym $mod+d exec --no-startup-id wmenu-run
 bindsym $mod+d exec --no-startup-id fuzzel
 
 bar {
@@ -180,5 +175,6 @@ bar {
 }
 
 default_border pixel 1
+gaps inner 30
 
 output "*" bg ~/Obrazy/leaf.jpg fill

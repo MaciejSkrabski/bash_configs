@@ -1,5 +1,6 @@
 export LANG=pl
 export LC_ALL=pl_PL.UTF-8
+export CUDA_DISABLE_PERF_BOOST=1
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 export SSH_ASKPASS="/usr/bin/ksshaskpass"
 export SSH_ASKPASS_REQUIRE=prefer
@@ -8,6 +9,4 @@ export EDITOR=nvim
 export VISUAL=nvim
 export DIFFPROG='nvim -d'
 export GRIM_DEFAULT_DIR=$HOME/Obrazy/Screenshots/
-export MOZ_ENABLE_WAYLAND=1
-export ELECTRON_OZONE_PLATFORM_HINT=wayland
 export ZSH="$HOME/.oh-my-zsh"

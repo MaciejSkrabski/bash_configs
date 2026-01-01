@@ -1,0 +1,96 @@
+{
+    "layer": "top",
+    "position": "right", // Waybar position (top|bottom|left|right)
+    "expand-center": true,
+    "margin": "5 5 5 5",
+    "spacing": 8, // Gaps between modules (4px)
+
+    "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
+    "modules-center": ["sway/window"],
+    "modules-right": ["wlr/taskbar", "network", "backlight", "group/audio", "tray", "clock"],
+
+    "group/audio": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "not-power",
+            "transition-left-to-right": false,
+        },
+
+        "modules": [
+            "pulseaudio",  // first one never hidden
+            "pulseaudio/slider"  // first one never hidden
+        ],
+    },
+    "wlr/taskbar": {
+        "on-click": "activate",
+
+    },
+    "sway/workspaces": {
+         "disable-scroll": true,
+         "all-outputs": false,
+    },
+
+    "sway/window": {
+        "rotate": 270,
+    },
+
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "sway/scratchpad": {
+        "format": "{icon} {count}",
+        "show-empty": false,
+        "format-icons": ["", ""],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
+
+    "tray": {
+        "spacing": 10
+    },
+
+    "clock": {
+        "format": "{:%H\n%M}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "",
+        "format-ethernet": "\udb80\ude00",
+        "tooltip-format": "{ifname} with {ipaddr} via {gwaddr}",
+        "format-linked": "\uf00d",
+        "format-disconnected": "⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "rotate": 270,
+    },
+
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        //"rotate": 270,
+        "format": "{icon}\n{format_source}",
+        "format-bluetooth": "{icon} {format_source}",
+        "format-bluetooth-muted": "MUTE {icon} {format_source}",
+        "format-muted": "󰖁\n{format_source}",
+        "format-source": "",
+        "format-source-muted": "",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "pulseaudio/slider": {
+        "min": 0,
+        "max": 100,
+        "orientation": "vertical"
+    }
+}
+
