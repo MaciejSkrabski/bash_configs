@@ -1,2 +1,3 @@
-vim.o.background = "dark"
-vim.cmd("colorscheme tokyonight-night")
+require("catppuccin").setup({
+    transparent_background=true })
+vim.cmd("colorscheme catppuccin-mocha")

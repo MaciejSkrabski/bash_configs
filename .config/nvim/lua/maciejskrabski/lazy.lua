@@ -15,11 +15,12 @@ return require('lazy').setup({
   'tpope/vim-fugitive',
   'neovim/nvim-lspconfig',
   { 'folke/tokyonight.nvim', priority=1000, lazy=false},
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   {
     'nvim-telescope/telescope.nvim', branch = '0.1.x',
     dependencies = {
         'nvim-lua/plenary.nvim',
         'nvim-telescope/telescope-fzf-native.nvim', build='make'}
   },
-  {'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'}
+  --nvim-treesitter/nvim-treesitter', build = ':TSUpdate'}
 })

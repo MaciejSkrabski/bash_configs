@@ -1,6 +1,5 @@
--- Mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap=true, silent=true }
+
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
@@ -10,8 +9,8 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, opts)
 -- after the language server attaches to the current buffer
 vim.lsp.config('*', {
     on_attach = function(client, bufnr)
-        vim.api.nvim_buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc', {buf=bufnr})
-        vim.api.nvim_buf_set_option('tagfunc', 'v:lua.vim.lsp.tagfunc', {buf=bufnr})
+        vim.api.nvim_set_option_value('omnifunc', 'v:lua.vim.lsp.omnifunc', {buf=bufnr})
+        vim.api.nvim_set_option_value('tagfunc', 'v:lua.vim.lsp.tagfunc', {buf=bufnr})
 
         -- See `:help vim.lsp.*` for documentation on any of the below functions
         bufopts = { noremap=true, silent=true, buffer=bufnr }
@@ -33,21 +32,16 @@ vim.lsp.config('*', {
     end
 })
 
-local lsp_flags = {
-    -- This is the default in Nvim 0.7+
-    debounce_text_changes = 150,
+local servers = {
+    'ruff',
+    'pyright',
+    'rust_analyzer',
+    'ansiblels',
 }
 
-vim.lsp.config('ruff', {
-  init_options = {
-    settings = {
-      args = {},
-    }
-  }
-})
+vim.lsp.enable(servers)
 
 vim.lsp.config('pyright', {
-    flags = lsp_flags,
     python = {
         analysis = {
             autoSearchPaths = true,
@@ -57,18 +51,4 @@ vim.lsp.config('pyright', {
             useLibraryCodeForTypes = true,
         }
     }
-}
-)
-
-vim.lsp.config('rust_analyzer', {
-    flags = lsp_flags,
-    -- Server-specific settings...
-    settings = {
-        ["rust-analyzer"] = {}
-    }
-}
-)
-
-vim.lsp.config('ansiblels', {
-    flags = lsp_flags
 })
