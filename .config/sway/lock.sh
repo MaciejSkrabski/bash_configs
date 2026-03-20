@@ -1,7 +1,7 @@
-!#/bin/sh
+#!/usr/bin/zsh
 swayidle \
-    timeout 2 'swaymsg "output * dpms off"' \
-    resume 'swaymsg "output * dpms on"' &
+    timeout 1 'swaymsg "output * power off"' \
+    resume    'swaymsg "output * power on"' &
 
-swaylock -c 000000
+swaylock -Fec 000000
 kill %%

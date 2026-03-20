@@ -1,79 +1,71 @@
-input * {
+input "type:keyboard" {
     xkb_layout "pl"
 }
 
-input "1:1:AT_Translated_Set_2_keyboard" xkb_model "latitude"
-input "2:7:SynPS/2_Synaptics_TouchPad" {
+input "type:touchpad" {
     tap enabled
 }
 
 set $gnome-schema org.gnome.desktop.interface
+set $theme 'Orchis-Dark-Compact'
 
 exec_always {
-    gsettings set $gnome-schema gtk-theme 'Orchis-Dark-Compact'
-    gsettings set $gnome-schema icon-theme 'Orchis-Dark-Compact'
-    gsettings set $gnome-schema cursor-theme 'Orchis-Dark-Compact'
-    gsettings set $gnome-schema font-name 'NotoSansM Nerd Font Mono'
+    gsettings set $gnome-schema gtk-theme $theme
+    gsettings set $gnome-schema icon-theme $theme
+    gsettings set $gnome-schema cursor-theme $theme
+    gsettings set $gnome-schema font-name $theme
+    ~/.local/bin/clamshell.sh
 }
 
-
-# Mod4 = Win/Super Key
 set $mod Mod4
 set $explorer pcmanfm
 
-font pango: NotoSansM Nerd Font Mono 12
-floating_modifier $mod
+font pango: Hack Nerd Font Propo 10
+#output * bg ~/Walls/dark-geom.png center
 
 exec dbus-update-activation-environment \
     DISPLAY \
     XAUTHORITY \
     WAYLAND_DISPLAY
 
-set $lock swaylock --color 000000 -f -e -F
+set $laptop eDP-1
+bindswitch lid:on  output $laptop disable
+bindswitch lid:off output $laptop enable
 
-bindsym $mod+shift+x exec bash ~/.config/sway/lock.sh
-# lock screen on lid closed
-bindswitch --reload --locked lid:on exec $lock
-
+set $lock swaylock -Ffec 000000
 exec swayidle -w \
-        lock 'swaymsg "output * off"' \
-        unlock 'swaymsg "output * on"' \
+        lock   'swaymsg "output * power off"' \
+        unlock 'swaymsg "output * power on"' \
         before-sleep '$lock' \
 
+bindsym $mod+shift+x     exec bash ~/.config/sway/lock.sh
+bindsym $mod+Return      exec foot
+bindsym $mod+g           exec $explorer
 
-bindsym $mod+Return exec foot
-bindsym $mod+Shift+q kill
+bindsym $mod+Shift+q     kill
 
-# vimlike traversing
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
-bindsym $mod+semicolon split h
-bindsym $mod+v split v
-bindsym $mod+f fullscreen toggle
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+Shift+h     move left
+bindsym $mod+Shift+j     move down
+bindsym $mod+Shift+k     move up
+bindsym $mod+Shift+l     move right
 
-# toggle tiling / floating
+bindsym $mod+h           focus left
+bindsym $mod+j           focus down
+bindsym $mod+k           focus up
+bindsym $mod+l           focus right
+bindsym $mod+a           focus parent
+bindsym $mod+c           focus child
+
+bindsym $mod+semicolon   split h
+bindsym $mod+v           split v
+bindsym $mod+f           fullscreen toggle
+bindsym $mod+s           layout stacking
+bindsym $mod+w           layout tabbed
+bindsym $mod+e           layout toggle split
+
 bindsym $mod+Shift+space floating toggle
+bindsym $mod+space       focus mode_toggle
 
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
-
-# focus the parent container
-bindsym $mod+a focus parent
-
-# focus the child container
-bindsym $mod+c focus child
-
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -85,7 +77,6 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-# switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
@@ -97,84 +88,60 @@ bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 
-
+bindsym $mod+greater     move workspace to output right
+bindsym $mod+less        move workspace to output left
+bindsym $mod+Shift+1     move container to workspace $ws1
+bindsym $mod+Shift+2     move container to workspace $ws2
+bindsym $mod+Shift+3     move container to workspace $ws3
+bindsym $mod+Shift+4     move container to workspace $ws4
+bindsym $mod+Shift+5     move container to workspace $ws5
+bindsym $mod+Shift+6     move container to workspace $ws6
+bindsym $mod+Shift+7     move container to workspace $ws7
+bindsym $mod+Shift+8     move container to workspace $ws8
+bindsym $mod+Shift+9     move container to workspace $ws9
+bindsym $mod+Shift+0     move container to workspace $ws10
 bindsym $mod+Shift+minus move scratchpad
-bindsym $mod+minus scratchpad show
+bindsym $mod+minus       scratchpad show
 
-bindsym $mod+greater move workspace to output right
-bindsym $mod+less move workspace to output left
-
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
-
-# reload the configuration file
 bindsym $mod+Shift+c reload
-# restart sway inplace (preserves your layout/session, can be used to upgrade sway)
 bindsym $mod+Shift+r restart
-# exit sway (logs you out of your wayland session)
 bindsym $mod+Shift+e exec "swaynag -t warning -m 'Exit session?' -B 'Yes' 'swaymsg exit'"
 
-set $step 100
-
-# resize window (you can also use the mouse for that)
+bindsym $mod+r mode "resize"
 mode "resize" {
-        bindsym h resize shrink width $step px
-        bindsym j resize grow height $step px
-        bindsym k resize shrink height $step px
-        bindsym l resize grow width $step px
+        bindsym h      resize shrink width 10 px or 10 ppt
+        bindsym j      resize grow   height 10 px or 10 ppt
+        bindsym k      resize shrink height 10 px or 10 ppt
+        bindsym l      resize grow   width 10 px or 10 ppt
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 }
 
-################################################
-#
-#		 binds
-#
-################################################
-bindsym $mod+r		    mode "resize"
+bindsym Print         exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy -t image/png 
+bindsym shift+Print   exec grim -g "$(slurp -d)" - | wl-copy -t image/png
+bindsym Control+Print exec swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | grim -g - - | wl-copy -t image/png
 
-# file explorer on win+g
-bindsym $mod+g		    exec $explorer
+bindsym XF86AudioRaiseVolume exec "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+ -l 1 "
+bindsym XF86AudioLowerVolume exec "wpctl set-volume @DEFAULT_AUDIO_SINK@   2%-"
+bindsym XF86AudioMute        exec "wpctl set-mute   @DEFAULT_AUDIO_SINK@   toggle"
+bindsym XF86AudioMicMute     exec "wpctl set-mute   @DEFAULT_AUDIO_SOURCE@ toggle"
 
-# screenshots
-# screenshot focused monitor
-bindsym Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy -t image/png 
-# screenshot selected
-bindsym shift+Print exec grim -g "$(slurp -d)" - | wl-copy -t image/png
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
-#PulseAudio keybinds
-bindsym XF86AudioMute exec "pactl set-sink-mute @DEFAULT_SINK@ toggle"
-bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume @DEFAULT_SINK@ +2.5%"
-bindsym XF86AudioLowerVolume exec "pactl set-sink-volume @DEFAULT_SINK@ -2.5%"
-bindsym $mod+XF86AudioMute exec "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+bindsym XF86MonBrightnessUp   exec "brightnessctl -q set 5%+"
+bindsym XF86MonBrightnessDown exec "brightnessctl -q set 5%-"
+
 
 # assigns
 for_window [window_role="dialog"] floating enable
-for_window [window_type="dialog"] floating enable
 
-set $bg-color #1a1b26
-set $text-color #c0caf5
-set $inactive-text-color #195465
-set $urgent-bg-color #e53935
-
-#bindsym $mod+d exec --no-startup-id wmenu-run
-bindsym $mod+d exec --no-startup-id fuzzel
+default_border pixel 1
+bindsym $mod+d exec wmenu-run
 
 bar {
     swaybar_command waybar
 }
 
-default_border pixel 1
-gaps inner 30
-
-output "*" bg ~/Obrazy/leaf.jpg fill
