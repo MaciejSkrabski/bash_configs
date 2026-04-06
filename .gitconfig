@@ -1,8 +1,6 @@
 [include]
     path = ~/.gitconfig.user  # [user] section
-
-[diff]
-    ignoreAllSpace = true
+    defaultBranch = master
 
 [core]
     pager = delta
@@ -17,5 +15,18 @@
 [merge]
     conflictStyle = zdiff3
 
-[init]
-    defaultBranch = master
+[diff]
+    ignoreAllSpace = true
+
+[difftool]
+    prompt = false
+
+[credential]
+    provider = generic
+
+[pull]
+    rebase = true
+
+[advice]
+    defaultBranchName = false
+
