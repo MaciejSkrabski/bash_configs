@@ -43,5 +43,10 @@ return require('lazy').setup({
         'nvim-lua/plenary.nvim',
         'nvim-telescope/telescope-fzf-native.nvim', build='make'}
   },
-  {'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'}
+  {
+    'nvim-treesitter/nvim-treesitter',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    lazy = false,
+    build = ':TSUpdate',
+  }
 })

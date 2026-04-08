@@ -1,14 +1,48 @@
-vim.api.nvim_create_autocmd({"BufEnter","BufAdd","BufNew","BufNewFile","BufWinEnter"}, {
-    group = vim.api.nvim_create_augroup("TS_FOLD_WORKAROUND", {}),
-    callback = function()
-        vim.opt.foldmethod = "expr"
-        vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-    end
-})
-
-require'nvim-treesitter.configs'.setup {
-    ensure_installed = { "bash", "c", "lua", "luadoc", "vim", "vimdoc", "nginx", "rust", "sql", "ssh_config", "terraform", "tmux", "yaml", "query", "python", "dockerfile" },
-    highlight = {enable=true},
+local langs = {
+  'bash',
+  'c',
+  'dockerfile',
+  'git_config',
+  'git_rebase',
+  'gitattributes',
+  'gitcommit',
+  'gitignore',
+  'gpg',
+  'hcl',
+  'html',
+  'http',
+  'jq',
+  'json',
+  'lua',
+  'luadoc',
+  'markdown',
+  'nginx',
+  'passwd',
+  'python',
+  'query',
+  'regex',
+  'requirements',
+  'rust',
+  'robots_txt',
+  'sql',
+  'ssh_config',
+  'terraform',
+  'tmux',
+  'toml',
+  'vim',
+  'vimdoc',
+  'xml',
+  'yaml',
+  'zsh'
 }
+require('nvim-treesitter').install(langs)
 
-vim.opt.foldenable = false
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = langs,
+  callback = function()
+    vim.treesitter.start()                                    -- highlighting
+    -- vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'     -- folds
+    vim.wo.foldmethod = 'expr'
+    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()" -- indentation
+  end,
+})
