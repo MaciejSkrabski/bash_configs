@@ -1,6 +1,6 @@
 ZSH_THEME="bureau"
 HIST_STAMPS="yyyy-mm-dd"
-plugins=(gpg-agent)
+plugins=(gpg-agent dotenv)
 source $ZSH/oh-my-zsh.sh
 
 [[ -f ~/.my_aliases ]] && source ~/.my_aliases
