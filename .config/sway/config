@@ -17,6 +17,8 @@ exec_always {
     ~/.local/bin/clamshell.sh
 }
 
+exec_always --no-startup-id sh -lc '[ -x /usr/lib/pam_kwallet_init ] && /usr/lib/pam_kwallet_init'
+
 set $mod Mod4
 set $explorer pcmanfm
 
