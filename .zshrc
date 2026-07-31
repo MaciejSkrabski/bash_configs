@@ -6,7 +6,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(git)
-plugins=()
+plugins=(dotenv git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -19,8 +19,10 @@ if [ -f ~/.my_funs ]; then
     source ~/.my_funs
 fi
 
+emulate ksh -c "source ssh-find-agent.sh"
+ssh-add -l >&/dev/null || ssh-find-agent -a || eval $(ssh-agent) > /dev/null
+
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-eval $(ssh-agent -s) > /dev/null
 
 autoload -Uz zmv
