@@ -7,7 +7,7 @@
 
     "sway/workspaces": {
          "disable-scroll": true,
-         "all-outputs": false,
+         "all-outputs": false
     },
 
     "sway/mode": {
@@ -30,7 +30,7 @@
         "format": "{:%H:%M}",
         "format-alt": "{:%d.%m.%y}",
         "rotate": 270,
-        "locale": "pl_PL.UTF-8",
+        "locale": "pl_PL.UTF-8"
     },
     "backlight": {
         // "device": "acpi_video1",
@@ -39,13 +39,13 @@
     },
     "battery": {
         "states": {
-            // "good": 95,
+            "good": 95,
             "warning": 30,
             "critical": 15
         },
         "format": "{icon}",
         "format-alt": "{time}",
-        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
 
     },
     "network": {
@@ -54,14 +54,13 @@
             "wifi": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
             "ethernet": ["󰈀"],
             "disconnected": ["󰤮"]
-        },
+        }
     },
     "wireplumber": {
         "format": "{icon}",
         "format-icons": ["󰕿", "󰖀",  "󰕾"],
         "format-muted": "󰖁",
-        "on-click": "helvum",
-    },
+        "on-click": "helvum"
+    }
 }
-
 
