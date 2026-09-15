@@ -1,0 +1,6 @@
+URxvt*scrollBar: false
+URxvt*fading: 30
+!! URxvt*visualBell: true
+URxvt*saveLines: 0
+URxvt*perl-ext:
+URxvt*perl-ext-common:
