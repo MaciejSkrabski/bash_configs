@@ -34,21 +34,8 @@ vim.lsp.config('*', {
 
 local servers = {
     'ruff',
-    'pyright',
     'rust_analyzer',
-    'ansiblels',
 }
 
 vim.lsp.enable(servers)
 
-vim.lsp.config('pyright', {
-    python = {
-        analysis = {
-            autoSearchPaths = true,
-            autoImportCompletions = false,
-            typeCheckingMode = "strict",
-            diagnosticMode = "workspace",
-            useLibraryCodeForTypes = true,
-        }
-    }
-})
