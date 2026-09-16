@@ -3,14 +3,14 @@
 <openbox_menu xmlns="http://openbox.org/3.4/menu">
 
 <menu id="apps-term-menu" label="Terminals">
-  <item label="alacritty">
+  <item label="xterm">
     <action name="Execute">
-      <command>alacritty</command>
+      <command>xterm</command>
     </action>
   </item>
 </menu>
 
-<menu id="apps-net-menu" label="Internet">
+<menu id="apps-net-menu" label="Browsers">
   <item label="Firefox">
     <action name="Execute">
       <command>firefox</command>
@@ -18,6 +18,33 @@
         <enabled>yes</enabled>
         <wmclass>Firefox</wmclass>
       </startupnotify>
+    </action>
+  </item>
+  <item label="Librewolf">
+    <action name="Execute">
+      <command>librewolf</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+        <wmclass>Librewolf</wmclass>
+      </startupnotify>
+    </action>
+  </item>
+</menu>
+
+<menu id="apps-comms-menu" label="Comms">
+  <item label="Signal">
+    <action name="Execute">
+      <command>signal-desktop --password-store=kwallet6 --disable-gpu</command>
+    </action>
+  </item>
+  <item label="NeoChat">
+    <action name="Execute">
+      <command>neochat</command>
+    </action>
+  </item>
+  <item label="Element">
+    <action name="Execute">
+      <command>element-desktop --password-store=kwallet6 --disable-gpu</command>
     </action>
   </item>
 </menu>
@@ -64,6 +91,14 @@
       </startupnotify>
     </action>
   </item>
+  <item label="PcManFM">
+    <action name="Execute">
+      <command>pcmanfm</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+      </startupnotify>
+    </action>
+  </item>
 </menu>
 
 <menu id="apps-graphics-menu" label="Graphics">
@@ -99,6 +134,7 @@
   <menu id="apps-editors-menu"/>
   <menu id="apps-graphics-menu"/>
   <menu id="apps-net-menu"/>
+  <menu id="apps-comms-menu"/>
   <menu id="apps-office-menu"/>
   <menu id="apps-multimedia-menu"/>
   <menu id="apps-term-menu"/>
