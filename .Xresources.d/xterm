@@ -1,0 +1,51 @@
+XTerm.vt100.loginShell: true
+XTerm.vt100.termName: xterm-256color
+
+! Use a fontconfig/Xft font
+XTerm.vt100.renderFont: true
+XTerm.vt100.faceName: Hack Nerd Font Mono
+XTerm.vt100.faceSize: 12
+
+! Increase or decrease to taste
+XTerm.vt100.saveLines: 0
+
+! Don't jump to the bottom merely because output arrives while reviewing
+XTerm.vt100.scrollTtyOutput: false
+
+! A visible bell is less disruptive during audio work
+XTerm.vt100.visualBell: false
+XTerm.vt100.audibleBell: false
+
+! ---------------------------------------------------------------------
+! Clipboard
+! ---------------------------------------------------------------------
+
+
+! Put mouse selections into CLIPBOARD as well as PRIMARY
+XTerm.vt100.selectToClipboard: true
+
+! Familiar desktop shortcuts
+XTerm.vt100.translations: #override \
+    Ctrl Shift <Key>C: select-end(CLIPBOARD) \n\
+    Ctrl Shift <Key>V: insert-selection(CLIPBOARD) \n\
+    Shift <Key>Insert: insert-selection(CLIPBOARD)
+
+! ---------------------------------------------------------------------
+! Mouse and selection behavior
+! ---------------------------------------------------------------------
+
+! Keep the selection highlighted after focus changes
+XTerm.vt100.highlightSelection: true
+
+! Do not include the newline when selecting a whole line
+XTerm.vt100.cutNewline: false
+
+! Useful word-selection rules. This treats common shell/path punctuation
+! as part of a word, but adjust to your preference.
+XTerm.vt100.charClass: 33:48,35:48,37:48,38:48,42-47:48,63:48,64:48,95:48,126:48
+
+
+! ---------------------------------------------------------------------
+! tmux fixes
+! ---------------------------------------------------------------------
+XTerm.vt100.disallowedWindowOps: 20,21,SetXprop
