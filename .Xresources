@@ -7,10 +7,3 @@ Xft.hinting:            full
 #include ".Xresources.d/xterm"
 
 #include ".Xresources.d/colors/catppuccin-mocha.Xresources"
-! #include ".Xresources.d/colors/baskerville_lost_woods"
-! #include ".Xresources.d/colors/navy_and_ivory"
-! #include ".Xresources.d/colors/mylight"
-! #include ".Xresources.d/colors/tango"
-! #include ".Xresources.d/colors/embers"
-! #include ".Xresources.d/colors/dark"
-! #include ".Xresources.d/colors/24"
