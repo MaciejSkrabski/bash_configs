@@ -1,5 +1,6 @@
 XTerm.vt100.loginShell: true
 XTerm.vt100.termName: xterm-256color
+XTerm.VT100.cursorBlink: never
 
 ! Use a fontconfig/Xft font
 XTerm.vt100.renderFont: true
@@ -9,7 +10,7 @@ XTerm.vt100.faceSize: 12
 ! Increase or decrease to taste
 XTerm.vt100.saveLines: 0
 
-! Don't jump to the bottom merely because output arrives while reviewing
+! Dont jump to the bottom merely because output arrives while reviewing
 XTerm.vt100.scrollTtyOutput: false
 
 ! A visible bell is less disruptive during audio work
