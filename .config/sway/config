@@ -20,10 +20,9 @@ exec_always {
 exec_always --no-startup-id sh -lc '[ -x /usr/lib/pam_kwallet_init ] && /usr/lib/pam_kwallet_init'
 
 set $mod Mod4
-set $explorer pcmanfm
+set $explorer dolphin
 
 font pango: Hack Nerd Font Propo 10
-#output * bg ~/Walls/dark-geom.png center
 
 exec dbus-update-activation-environment \
     DISPLAY \
@@ -35,10 +34,6 @@ bindswitch lid:on  output $laptop disable
 bindswitch lid:off output $laptop enable
 
 set $lock swaylock -Ffec 000000
-exec swayidle -w \
-        lock   'swaymsg "output * power off"' \
-        unlock 'swaymsg "output * power on"' \
-        before-sleep '$lock' \
 
 bindsym $mod+shift+x     exec bash ~/.config/sway/lock.sh
 bindsym $mod+Return      exec foot
