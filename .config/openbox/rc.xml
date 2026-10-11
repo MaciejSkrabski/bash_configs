@@ -347,9 +347,9 @@
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
-          <name>pcmanfm</name>
+          <name>dolphin</name>
         </startupnotify>
-        <command>pcmanfm</command>
+        <command>dolphin</command>
       </action>
     </keybind>
     <keybind key="W-Return">

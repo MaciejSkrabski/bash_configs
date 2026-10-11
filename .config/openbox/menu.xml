@@ -10,6 +10,45 @@
   </item>
 </menu>
 
+<menu id="apps-music-menu" label="Music">
+  <item label="Ardour">
+    <action name="Execute">
+      <command>pw-jack ardour9</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+        <wmclass>Ardour</wmclass>
+      </startupnotify>
+    </action>
+  </item>
+  <item label="Reaper">
+    <action name="Execute">
+      <command>pw-jack reaper</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+        <wmclass>Reaper</wmclass>
+      </startupnotify>
+    </action>
+  </item>
+  <item label="Guitarix">
+    <action name="Execute">
+      <command>pw-jack guitarix</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+        <wmclass>Guitarix</wmclass>
+      </startupnotify>
+    </action>
+  </item>
+  <item label="qpwgraph">
+    <action name="Execute">
+      <command>qpwgraph</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+        <wmclass>qpwgraph</wmclass>
+      </startupnotify>
+    </action>
+  </item>
+</menu>
+
 <menu id="apps-net-menu" label="Browsers">
   <item label="Firefox">
     <action name="Execute">
@@ -91,9 +130,9 @@
       </startupnotify>
     </action>
   </item>
-  <item label="PcManFM">
+  <item label="Dolphin">
     <action name="Execute">
-      <command>pcmanfm</command>
+      <command>dolphin</command>
       <startupnotify>
         <enabled>yes</enabled>
       </startupnotify>
@@ -131,6 +170,7 @@
 <menu id="root-menu" label="Openbox 3">
   <separator label="Applications" />
   <menu id="apps-accessories-menu"/>
+  <menu id="apps-music-menu"/>
   <menu id="apps-editors-menu"/>
   <menu id="apps-graphics-menu"/>
   <menu id="apps-net-menu"/>
