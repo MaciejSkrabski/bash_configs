@@ -5,7 +5,7 @@ XTerm.VT100.cursorBlink: never
 ! Use a fontconfig/Xft font
 XTerm.vt100.renderFont: true
 XTerm.vt100.faceName: Hack Nerd Font Mono
-XTerm.vt100.faceSize: 12
+XTerm.vt100.faceSize: 16
 
 ! Increase or decrease to taste
 XTerm.vt100.saveLines: 0
